@@ -8,10 +8,9 @@ describe('ChartViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChartViewComponent]
-    })
-    .compileComponents();
-    
+      imports: [ChartViewComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ChartViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

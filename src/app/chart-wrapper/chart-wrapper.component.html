@@ -1,36 +1,38 @@
 <div class="my-5">
+  <div class="flex m-auto w-80">
+    <nz-range-picker
+      [nzDisabledDate]="disabledDate"
+      (nzOnCalendarChange)="trackCalendarChange($event)"
+      [ngModel]="dateRange"
+    ></nz-range-picker>
+  </div>
 
-	<div class="flex m-auto w-80">
-		<nz-range-picker [nzDisabledDate]="disabledDate" (nzOnCalendarChange)="trackCalendarChange($event)" [ngModel]="dateRange"></nz-range-picker>
-	</div>
+  <div class="mt-5 h-80 w-full">
+    <app-chart-dashboard [chartConfig]="chartConfig" [dateRange]="dateRange" [chartData]="charts"></app-chart-dashboard>
+  </div>
 
-	<div class="mt-5 h-80 w-full">
-		<app-chart-dashboard [chartConfig]="chartConfig" [dateRange]="dateRange" [chartData]="charts"></app-chart-dashboard>
-	</div>
-
-	<div>
-		<p class=" mt-10 text-center text-3xl mb-4">Configure Charts</p>
-		<nz-checkbox-wrapper (nzOnChange)="selectChart($event)" class="w-full">
-			<div class="flex justify-center">
-				<ng-container *ngFor="let chart of charts; index as i">
-					<div class="mx-5 items-start min-w-[150px]">
-						<label nz-checkbox [ngModel]="!!chartConfig[chart.id].selected" [nzValue]="chart.id" >
-							<div class="flex items-center font-semibold mb-2.5">
-								{{ chart.name }}
-							</div>
-						</label>
-						<div *ngIf="chart.selected">
-							<!--							<nz-color-picker [nzDefaultValue]="chart.color" nzFormat="hex"-->
-							<!--															 (nzOnChange)="setChartColor($event, i)"></nz-color-picker>-->
-							<nz-radio-group (ngModelChange)="updateChartType($event, chart.id)" [ngModel]="chart.type">
-								<label nz-radio nzValue="line">Lines</label>
-								<label nz-radio nzValue="bar">Bars</label>
-							</nz-radio-group>
-						</div>
-					</div>
-
-				</ng-container>
-			</div>
-		</nz-checkbox-wrapper>
-	</div>
+  <div>
+    <p class="mt-10 text-center text-3xl mb-4">Configure Charts</p>
+    <nz-checkbox-wrapper (nzOnChange)="selectChart($event)" class="w-full">
+      <div class="flex justify-center">
+        <ng-container *ngFor="let chart of charts; index as i">
+          <div class="mx-5 items-start min-w-[150px]">
+            <label nz-checkbox [ngModel]="!!chartConfig[chart.id].selected" [nzValue]="chart.id">
+              <div class="flex items-center font-semibold mb-2.5">
+                {{ chart.name }}
+              </div>
+            </label>
+            <div *ngIf="chart.selected">
+              <!--							<nz-color-picker [nzDefaultValue]="chart.color" nzFormat="hex"-->
+              <!--															 (nzOnChange)="setChartColor($event, i)"></nz-color-picker>-->
+              <nz-radio-group (ngModelChange)="updateChartType($event, chart.id)" [ngModel]="chart.type">
+                <label nz-radio nzValue="line">Lines</label>
+                <label nz-radio nzValue="bar">Bars</label>
+              </nz-radio-group>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </nz-checkbox-wrapper>
+  </div>
 </div>

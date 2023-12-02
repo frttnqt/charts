@@ -8,10 +8,9 @@ describe('ChartDashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChartDashboardComponent]
-    })
-    .compileComponents();
-    
+      imports: [ChartDashboardComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ChartDashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

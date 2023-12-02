@@ -36,7 +36,7 @@ export class ChartWrapperComponent implements OnInit {
 
   constructor(private cdRef: ChangeDetectorRef) {}
 
-  // Hey guys, regarding dateRange. I got no clue, what kind of data format expected for Fluidity/etc
+  // Hey guys, regarding dateRange. I got no clue, what kind of data format expected for Fluidity/etc.
   // So theoretically I can only imagine we expect some additional data like:
   // {23.06.22: 150kW} So for possible solution: get Dates selected , filter for dates and sum the data;
   // However I see no real example of input. Thanks in advance.
@@ -67,8 +67,6 @@ export class ChartWrapperComponent implements OnInit {
 
   public selectChart(selectedIds: number[]): void {
     Object.keys(this.chartConfig).forEach(chartId => {
-      // eslint-disable-next-line no-console
-      console.log('check');
       return (this.chartConfig[chartId].selected = selectedIds.includes(Number(chartId)));
     });
     this.chartConfig = { ...this.chartConfig };

@@ -31,16 +31,11 @@ import { isAfter, isBefore } from 'date-fns';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChartWrapperComponent implements OnInit {
-  private dateLimits = [new Date(2023, 11, 1), new Date(2023, 11, 10)];
-  public selectedCharts: number[];
+  private dateLimits = [new Date(2023, 10, 1), new Date(2023, 10, 4)];
 
   constructor(private cdRef: ChangeDetectorRef) {}
 
-  // Hey guys, regarding dateRange. I got no clue, what kind of data format expected for Fluidity/etc.
-  // So theoretically I can only imagine we expect some additional data like:
-  // {23.06.22: 150kW} So for possible solution: get Dates selected , filter for dates and sum the data;
-  // However I see no real example of input. Thanks in advance.
-  public dateRange: Date[] = [new Date(2023, 11, 2), new Date(2023, 11, 7)];
+  public dateRange: Date[] = [new Date(2023, 10, 1), new Date(2023, 10, 4)];
   public charts: ChartData[] = [];
   public chartConfig: ChartConfigData;
 

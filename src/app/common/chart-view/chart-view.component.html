@@ -1,1 +1,5 @@
-<p>{{ chart.name }}</p>
+<div class="h-[300px]" [ngSwitch]="chartConfig[chart.id].type">
+  <ngx-charts-bar-horizontal *ngSwitchCase="'bar'" [results]="initialData"> </ngx-charts-bar-horizontal>
+  <ngx-charts-line-chart *ngSwitchCase="'line'" [results]="serializedChartData" [timeline]="true" [xAxis]="true">
+  </ngx-charts-line-chart>
+</div>

@@ -7,7 +7,7 @@
     ></nz-range-picker>
   </div>
 
-  <div class="mt-5 h-80 w-full">
+  <div class="mt-5 h-[400px] w-full">
     <app-chart-dashboard [chartConfig]="chartConfig" [dateRange]="dateRange" [chartData]="charts"></app-chart-dashboard>
   </div>
 
@@ -25,9 +25,12 @@
             <div *ngIf="chartConfig[chart.id].selected">
               <!--							<nz-color-picker [nzDefaultValue]="chart.color" nzFormat="hex"-->
               <!--															 (nzOnChange)="setChartColor($event, i)"></nz-color-picker>-->
-              <nz-radio-group (ngModelChange)="updateChartType($event, chart.id)" [ngModel]="chart.type">
+              <nz-radio-group
+                (ngModelChange)="updateChartType($event, chart.id)"
+                [ngModel]="chartConfig[chart.id].type"
+              >
                 <label nz-radio nzValue="line">Lines</label>
-                <label nz-radio nzValue="bar">Bars</label>
+                <label nz-radio nzValue="bar">Bar</label>
               </nz-radio-group>
             </div>
           </div>

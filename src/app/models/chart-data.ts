@@ -1,8 +1,15 @@
+export interface ChartMeter {
+  id: number;
+  name: string;
+  value: number;
+  color: string;
+  date: Date;
+}
 export interface ChartData {
   id: number;
   name: string;
   type: 'line' | 'bar';
-  data: { id: number; value: number; color: string; date: Date }[];
+  data: ChartMeter[];
   selected: boolean;
 }
 

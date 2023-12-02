@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ChartConfigData, ChartData } from '@app/models/chart-data';
 import { NgForOf, NgIf } from '@angular/common';
 import { ChartViewComponent } from '@app/common/chart-view/chart-view.component';

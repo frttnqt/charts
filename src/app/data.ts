@@ -1,4 +1,4 @@
-export var single = [
+export const single = [
   {
     name: 'Germany',
     value: 8940000,
@@ -13,7 +13,7 @@ export var single = [
   },
 ];
 
-export var multi = [
+export const multi = [
   {
     name: 'Germany',
     series: [

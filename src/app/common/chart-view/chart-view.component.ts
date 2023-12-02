@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ChartData } from '@app/models/chart-data';
 
 @Component({
@@ -9,11 +9,7 @@ import { ChartData } from '@app/models/chart-data';
   styleUrl: './chart-view.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ChartViewComponent implements OnChanges {
+export class ChartViewComponent {
   @Input() public dateRange: Date[];
   @Input() public chart: ChartData;
-
-  public ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.chart, this.dateRange);
-  }
 }

@@ -40,7 +40,6 @@ export default [
   {
     id: 2,
     name: 'Fluidity',
-    selected: true,
     data: [
       {
         id: 1,

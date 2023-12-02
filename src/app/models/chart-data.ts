@@ -10,7 +10,6 @@ export interface ChartData {
   name: string;
   type: 'line' | 'bar';
   data: ChartMeter[];
-  selected: boolean;
 }
 
 export interface ChartConfigData {

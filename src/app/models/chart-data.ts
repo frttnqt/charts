@@ -2,7 +2,6 @@ export interface ChartMeter {
   id: number;
   name: string;
   value: number;
-  color: string;
   date: Date;
 }
 export interface ChartData {

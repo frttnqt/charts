@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChartViewComponent } from './chart-view.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ChartViewComponent', () => {
   let component: ChartViewComponent;
@@ -8,7 +9,7 @@ describe('ChartViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChartViewComponent],
+      imports: [ChartViewComponent, NoopAnimationsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ChartViewComponent);
@@ -18,7 +19,7 @@ describe('ChartViewComponent', () => {
       id: 1,
       name: '1',
       type: 'line',
-      data: [{ date: new Date(2022, 1, 1), id: 2, name: '2', value: 300, color: null }],
+      data: [{ date: new Date(2022, 1, 1), id: 2, name: '2', value: 300 }],
     };
     fixture.detectChanges();
   });

@@ -67,6 +67,8 @@ export class ChartWrapperComponent implements OnInit {
 
   public selectChart(selectedIds: number[]): void {
     Object.keys(this.chartConfig).forEach(chartId => {
+      // eslint-disable-next-line no-console
+      console.log('check');
       return (this.chartConfig[chartId].selected = selectedIds.includes(Number(chartId)));
     });
     this.chartConfig = { ...this.chartConfig };

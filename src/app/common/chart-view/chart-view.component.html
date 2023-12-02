@@ -1,5 +1,21 @@
-<div class="h-[300px]" [ngSwitch]="chartConfig?.[chart?.id]?.type">
-  <ngx-charts-bar-horizontal *ngSwitchCase="'bar'" [results]="initialData"> </ngx-charts-bar-horizontal>
-  <ngx-charts-line-chart *ngSwitchCase="'line'" [results]="serializedChartData" [timeline]="true" [xAxis]="true">
+<div class="h-[220px]" [ngSwitch]="chartConfig?.[chart?.id]?.type">
+  <ngx-charts-bar-horizontal [scheme]="colorScheme" *ngSwitchCase="'bar'" [results]="initialData">
+  </ngx-charts-bar-horizontal>
+  <ngx-charts-line-chart
+    [scheme]="colorScheme"
+    *ngSwitchCase="'line'"
+    [results]="serializedChartData"
+    [timeline]="true"
+    [xAxis]="true"
+  >
   </ngx-charts-line-chart>
+
+  <div class="flex w-full justify-center items-center mt-2.5">
+    <div class="mr-10">Color scheme</div>
+    <nz-select class="w-40" [(ngModel)]="colorScheme">
+      <ng-container *ngFor="let color of availableColorSchemes">
+        <nz-option [nzValue]="color" [nzLabel]="color"></nz-option>
+      </ng-container>
+    </nz-select>
+  </div>
 </div>

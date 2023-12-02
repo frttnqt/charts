@@ -65,7 +65,7 @@ export class ChartWrapperComponent implements OnInit {
     this.cdRef.detectChanges();
   }
 
-  public selectChart(selectedIds: number[]): void {
+  public setChartVisibility(selectedIds: number[]): void {
     Object.keys(this.chartConfig).forEach(chartId => {
       return (this.chartConfig[chartId].selected = selectedIds.includes(Number(chartId)));
     });

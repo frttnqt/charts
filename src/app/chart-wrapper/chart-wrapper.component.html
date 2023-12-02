@@ -13,7 +13,7 @@
 
   <div>
     <p class="mt-10 text-center text-3xl mb-4">Configure Charts</p>
-    <nz-checkbox-wrapper (nzOnChange)="selectChart($event)" class="w-full">
+    <nz-checkbox-wrapper (nzOnChange)="setChartVisibility($event)" class="w-full">
       <div class="flex justify-center">
         <ng-container *ngFor="let chart of charts; index as i">
           <div class="mx-5 items-start min-w-[150px]">
@@ -22,7 +22,7 @@
                 {{ chart.name }}
               </div>
             </label>
-            <div *ngIf="chart.selected">
+            <div *ngIf="chartConfig[chart.id].selected">
               <!--							<nz-color-picker [nzDefaultValue]="chart.color" nzFormat="hex"-->
               <!--															 (nzOnChange)="setChartColor($event, i)"></nz-color-picker>-->
               <nz-radio-group (ngModelChange)="updateChartType($event, chart.id)" [ngModel]="chart.type">

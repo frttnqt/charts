@@ -11,6 +11,7 @@ import { ChartViewComponent } from '@app/common/chart-view/chart-view.component'
 import { ChartConfigData, ChartData } from '@app/models/chart-data';
 import { ChartDashboardComponent } from '@app/common/chart-dashboard/chart-dashboard.component';
 import { isAfter, isBefore } from 'date-fns';
+import { CustomButtonComponent } from '@app/lib/custom-button/custom-button.component';
 
 @Component({
   selector: 'app-chart-wrapper',
@@ -25,6 +26,7 @@ import { isAfter, isBefore } from 'date-fns';
     ChartViewComponent,
     ChartDashboardComponent,
     NgIf,
+    CustomButtonComponent,
   ],
   templateUrl: './chart-wrapper.component.html',
   styleUrl: './chart-wrapper.component.scss',

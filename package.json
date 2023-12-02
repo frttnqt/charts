@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test-cover": "ng test  --code-coverage --source-map=false",
     "test-cover:local": "ng test  --code-coverage --source-map=true",
+		"test": "npm run test-cover:local",
     "prettier:check": "prettier --config .prettierrc --check \"src/**/*.{ts,css,html}\" --write",
     "prettier:check:project": "prettier --config .prettierrc --check \"src/**/*.{ts,css,html}\" --write .",
     "prepare": "husky install"

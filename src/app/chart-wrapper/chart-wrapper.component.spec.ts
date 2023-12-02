@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChartWrapperComponent } from './chart-wrapper.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ChartWrapperComponent', () => {
   let component: ChartWrapperComponent;
@@ -8,7 +9,7 @@ describe('ChartWrapperComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChartWrapperComponent],
+      imports: [ChartWrapperComponent, NoopAnimationsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ChartWrapperComponent);

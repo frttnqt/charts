@@ -11,6 +11,4 @@ import { ChartWrapperComponent } from '@app/chart-wrapper/chart-wrapper.componen
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  private title = 'charts-test';
-}
+export class AppComponent {}

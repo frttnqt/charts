@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { NgForOf, NgIf } from '@angular/common';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
@@ -38,10 +38,7 @@ import { FormControlPipe } from '@app/shared/form-control.pipe';
 export class ChartWrapperComponent implements OnInit {
   private dateLimits = [new Date(2023, 10, 1), new Date(2023, 10, 4)];
 
-  constructor(
-    private cdRef: ChangeDetectorRef,
-    private fb: FormBuilder
-  ) {}
+  constructor(private fb: FormBuilder) {}
 
   public dateRangeControl: FormControl = new FormControl(this.dateLimits);
   public charts: ChartData[] = [];

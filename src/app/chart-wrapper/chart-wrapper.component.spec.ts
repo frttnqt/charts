@@ -26,14 +26,4 @@ describe('ChartWrapperComponent', () => {
     expect(component.disabledDate(new Date())).toBeTruthy();
     expect(component.disabledDate(new Date(2023, 10, 3))).toBeFalse();
   });
-
-  it('<setChartVisibility>', () => {
-    component.setChartVisibility([]);
-    Object.keys(component.chartConfig).map(key => expect(component.chartConfig[key].selected).toBeFalsy());
-  });
-
-  it('<updateChartType>', () => {
-    component.updateChartType('bar', 1);
-    expect(component.chartConfig[1].type).toEqual('bar');
-  });
 });

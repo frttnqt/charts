@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { NgForOf, NgIf } from '@angular/common';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzColorPickerModule } from 'ng-zorro-antd/color-picker';
 
 import chartData from '../../data/available-charts';
@@ -12,6 +12,7 @@ import { ChartConfigData, ChartData } from '@app/models/chart-data';
 import { ChartDashboardComponent } from '@app/common/chart-dashboard/chart-dashboard.component';
 import { isAfter, isBefore } from 'date-fns';
 import { CustomButtonComponent } from '@app/lib/custom-button/custom-button.component';
+import { FormControlPipe } from '@app/shared/form-control.pipe';
 
 @Component({
   selector: 'app-chart-wrapper',
@@ -28,6 +29,7 @@ import { CustomButtonComponent } from '@app/lib/custom-button/custom-button.comp
     NgIf,
     CustomButtonComponent,
     ReactiveFormsModule,
+    FormControlPipe,
   ],
   templateUrl: './chart-wrapper.component.html',
   styleUrl: './chart-wrapper.component.scss',
@@ -36,39 +38,29 @@ import { CustomButtonComponent } from '@app/lib/custom-button/custom-button.comp
 export class ChartWrapperComponent implements OnInit {
   private dateLimits = [new Date(2023, 10, 1), new Date(2023, 10, 4)];
 
-  constructor(private cdRef: ChangeDetectorRef) {}
+  constructor(
+    private cdRef: ChangeDetectorRef,
+    private fb: FormBuilder
+  ) {}
 
   public dateRangeControl: FormControl = new FormControl(this.dateLimits);
   public charts: ChartData[] = [];
-  public chartConfig: ChartConfigData;
+  public chartConfig: FormGroup;
 
   public ngOnInit(): void {
     this.charts = chartData;
 
-    this.chartConfig = this.charts.reduce((acc, cur) => {
-      acc[cur.id] = {
-        selected: true,
-        type: 'line',
-      };
+    const configData = this.charts.reduce((acc, cur) => {
+      acc[cur.id] = this.fb.group({
+        selected: new FormControl(true),
+        type: new FormControl('line'),
+      });
       return acc;
     }, {});
+    this.chartConfig = this.fb.group<ChartConfigData>(configData);
   }
 
   public disabledDate = (cur: Date): boolean => {
     return isBefore(cur, this.dateLimits[0]) || isAfter(cur, this.dateLimits[1]);
   };
-
-  public setChartVisibility(selectedIds: number[]): void {
-    Object.keys(this.chartConfig).forEach(chartId => {
-      return (this.chartConfig[chartId].selected = selectedIds.includes(Number(chartId)));
-    });
-    this.chartConfig = { ...this.chartConfig };
-    this.cdRef.detectChanges();
-  }
-
-  public updateChartType(type: 'line' | 'bar', chartId: number): void {
-    this.chartConfig[chartId].type = type;
-    this.chartConfig = { ...this.chartConfig };
-    this.cdRef.detectChanges();
-  }
 }

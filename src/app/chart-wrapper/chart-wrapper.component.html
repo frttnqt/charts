@@ -1,14 +1,14 @@
 <div class="my-5">
   <div class="flex m-auto w-80">
-    <nz-range-picker
-      [nzDisabledDate]="disabledDate"
-      (nzOnCalendarChange)="trackCalendarChange($event)"
-      [ngModel]="dateRange"
-    ></nz-range-picker>
+    <nz-range-picker [formControl]="dateRangeControl" [nzDisabledDate]="disabledDate"></nz-range-picker>
   </div>
 
   <div class="mt-5 h-[400px] w-full">
-    <app-chart-dashboard [chartConfig]="chartConfig" [dateRange]="dateRange" [chartData]="charts"></app-chart-dashboard>
+    <app-chart-dashboard
+      [chartConfig]="chartConfig"
+      [dateRange]="dateRangeControl.value"
+      [chartData]="charts"
+    ></app-chart-dashboard>
   </div>
 
   <div>

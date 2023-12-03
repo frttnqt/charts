@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { NgForOf, NgIf } from '@angular/common';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzColorPickerModule } from 'ng-zorro-antd/color-picker';
 
 import chartData from '../../data/available-charts';
@@ -27,6 +27,7 @@ import { CustomButtonComponent } from '@app/lib/custom-button/custom-button.comp
     ChartDashboardComponent,
     NgIf,
     CustomButtonComponent,
+    ReactiveFormsModule,
   ],
   templateUrl: './chart-wrapper.component.html',
   styleUrl: './chart-wrapper.component.scss',
@@ -37,7 +38,7 @@ export class ChartWrapperComponent implements OnInit {
 
   constructor(private cdRef: ChangeDetectorRef) {}
 
-  public dateRange: Date[] = [new Date(2023, 10, 1), new Date(2023, 10, 4)];
+  public dateRangeControl: FormControl = new FormControl(this.dateLimits);
   public charts: ChartData[] = [];
   public chartConfig: ChartConfigData;
 
@@ -56,11 +57,6 @@ export class ChartWrapperComponent implements OnInit {
   public disabledDate = (cur: Date): boolean => {
     return isBefore(cur, this.dateLimits[0]) || isAfter(cur, this.dateLimits[1]);
   };
-
-  public trackCalendarChange(dateRange: Date[]): void {
-    this.dateRange = dateRange;
-    this.cdRef.detectChanges();
-  }
 
   public setChartVisibility(selectedIds: number[]): void {
     Object.keys(this.chartConfig).forEach(chartId => {

@@ -27,13 +27,6 @@ describe('ChartWrapperComponent', () => {
     expect(component.disabledDate(new Date(2023, 10, 3))).toBeFalse();
   });
 
-  it('<trackCalendarChange>', () => {
-    expect(component.dateRange).toEqual([new Date(2023, 10, 1), new Date(2023, 10, 4)]);
-    const dates = [new Date(2023, 10, 2), new Date(2023, 10, 3)];
-    component.trackCalendarChange(dates);
-    expect(component.dateRange).toEqual(dates);
-  });
-
   it('<setChartVisibility>', () => {
     component.setChartVisibility([]);
     Object.keys(component.chartConfig).map(key => expect(component.chartConfig[key].selected).toBeFalsy());

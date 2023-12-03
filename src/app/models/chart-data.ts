@@ -1,3 +1,5 @@
+import { FormControl } from '@angular/forms';
+
 export interface ChartMeter {
   id: number;
   name: string;
@@ -7,13 +9,17 @@ export interface ChartMeter {
 export interface ChartData {
   id: number;
   name: string;
-  type: 'line' | 'bar';
   data: ChartMeter[];
 }
 
+export interface SensorData {
+  type: 'line' | 'bar';
+  selected: boolean;
+}
+
 export interface ChartConfigData {
-  [id: number]: {
-    type: 'line' | 'bar';
-    selected: boolean;
-  };
+  [id: number]: SensorData;
+}
+export interface ChartConfigFormData {
+  [id: number]: FormControl<SensorData>;
 }

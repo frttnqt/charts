@@ -90,7 +90,66 @@ export default [
         id: 4,
         value: 60,
         name: 'Sensor #4',
-        color: null,
+        date: new Date(2023, 10, 4),
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: 'Petrol',
+    data: [
+      {
+        id: 1,
+        value: 100,
+        name: 'Sensor #1',
+        date: new Date(2023, 10, 1),
+      },
+      {
+        id: 2,
+        value: 320,
+        name: 'Sensor #2',
+        date: new Date(2023, 10, 2),
+      },
+      {
+        id: 3,
+        value: 400,
+        name: 'Sensor #3',
+        date: new Date(2023, 10, 3),
+      },
+      {
+        id: 4,
+        value: 60,
+        name: 'Sensor #4',
+        date: new Date(2023, 10, 4),
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: 'Human Lives',
+    data: [
+      {
+        id: 1,
+        value: 10,
+        name: 'Sensor #1',
+        date: new Date(2023, 10, 1),
+      },
+      {
+        id: 2,
+        value: 5,
+        name: 'Sensor #2',
+        date: new Date(2023, 10, 2),
+      },
+      {
+        id: 3,
+        value: 20,
+        name: 'Sensor #3',
+        date: new Date(2023, 10, 3),
+      },
+      {
+        id: 4,
+        value: 15,
+        name: 'Sensor #4',
         date: new Date(2023, 10, 4),
       },
     ],

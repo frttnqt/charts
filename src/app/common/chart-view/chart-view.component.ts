@@ -31,7 +31,7 @@ export class ChartViewComponent {
 
   public availableColorSchemes = ['vivid', 'natural', 'cool', 'fire'];
 
-  public colorScheme = 'vivid';
+  public colorScheme = this.availableColorSchemes[Math.floor(Math.random() * this.availableColorSchemes.length)];
 
   public get initialData(): ChartMeter[] {
     return this.chart.data.filter(sensor => isDataWithinTimeInterval(sensor, this.dateRange));

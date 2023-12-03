@@ -1,7 +1,15 @@
 <div class="h-[220px]" [ngSwitch]="chartConfig?.[chart?.id]?.type">
-  <ngx-charts-bar-horizontal [scheme]="colorScheme" *ngSwitchCase="'bar'" [results]="initialData">
+  <ngx-charts-bar-horizontal
+    [legend]="true"
+    [legendTitle]="chart.name"
+    [scheme]="colorScheme"
+    *ngSwitchCase="'bar'"
+    [results]="initialData"
+  >
   </ngx-charts-bar-horizontal>
   <ngx-charts-line-chart
+    [legend]="true"
+    [legendTitle]="chart.name"
     [scheme]="colorScheme"
     *ngSwitchCase="'line'"
     [results]="serializedChartData"

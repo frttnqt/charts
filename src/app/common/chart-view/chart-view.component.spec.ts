@@ -18,7 +18,6 @@ describe('ChartViewComponent', () => {
     component.chart = {
       id: 1,
       name: '1',
-      type: 'line',
       data: [{ date: new Date(2022, 1, 1), id: 2, name: '2', value: 300 }],
     };
     fixture.detectChanges();

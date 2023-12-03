@@ -8,11 +8,12 @@ import { NzColorPickerModule } from 'ng-zorro-antd/color-picker';
 import chartData from '../../data/available-charts';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { ChartViewComponent } from '@app/common/chart-view/chart-view.component';
-import { ChartConfigData, ChartData } from '@app/models/chart-data';
+import { ChartData } from '@app/models/chart-data';
 import { ChartDashboardComponent } from '@app/common/chart-dashboard/chart-dashboard.component';
 import { isAfter, isBefore } from 'date-fns';
 import { CustomButtonComponent } from '@app/lib/custom-button/custom-button.component';
 import { FormControlPipe } from '@app/shared/form-control.pipe';
+import { ChartWrapperService } from '@app/chart-wrapper/chart-wrapper.service';
 
 @Component({
   selector: 'app-chart-wrapper',
@@ -31,6 +32,7 @@ import { FormControlPipe } from '@app/shared/form-control.pipe';
     ReactiveFormsModule,
     FormControlPipe,
   ],
+  providers: [ChartWrapperService],
   templateUrl: './chart-wrapper.component.html',
   styleUrl: './chart-wrapper.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -38,7 +40,10 @@ import { FormControlPipe } from '@app/shared/form-control.pipe';
 export class ChartWrapperComponent implements OnInit {
   private dateLimits = [new Date(2023, 10, 1), new Date(2023, 10, 4)];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private chartWrapperService: ChartWrapperService
+  ) {}
 
   public dateRangeControl: FormControl = new FormControl(this.dateLimits);
   public charts: ChartData[] = [];
@@ -46,15 +51,7 @@ export class ChartWrapperComponent implements OnInit {
 
   public ngOnInit(): void {
     this.charts = chartData;
-
-    const configData = this.charts.reduce((acc, cur) => {
-      acc[cur.id] = this.fb.group({
-        selected: new FormControl(true),
-        type: new FormControl('line'),
-      });
-      return acc;
-    }, {});
-    this.chartConfig = this.fb.group<ChartConfigData>(configData);
+    this.chartConfig = this.chartWrapperService.generateChartForm(this.charts);
   }
 
   public disabledDate = (cur: Date): boolean => {

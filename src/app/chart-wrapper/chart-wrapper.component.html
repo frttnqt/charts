@@ -14,9 +14,9 @@
   <div>
     <p class="mt-10 text-center text-3xl mb-4">Configure Charts</p>
     <nz-checkbox-wrapper class="w-full">
-      <div class="flex justify-center">
+      <div class="flex justify-center flex-wrap">
         <ng-container *ngFor="let chart of charts; index as i">
-          <div class="mx-5 items-start min-w-[150px]">
+          <div class="mx-5 items-start min-w-[150px] mb-2.5">
             <label
               nz-checkbox
               [formControl]="chartConfig.get([chart.id, 'selected']) | formControl"
